@@ -12,7 +12,7 @@ import Logo from "@/components/react-svg/logo";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 import Rayhan from "@/assets/web/barbers/booking-list/rayhan-book.jpeg";
-import Anthony from "@/assets/web/barbers/booking-list/anthony-book.jpeg";
+import Anthony from "@/assets/web/barbers/booking-list/anthony-book.jpg";
 import Jay from "@/assets/web/barbers/booking-list/jay-book.svg";
 import Wyatt from "@/assets/web/barbers/booking-list/wyatt-book.svg";
 import Emman from "@/assets/web/barbers/booking-list/emman-book.svg";
@@ -21,7 +21,7 @@ import Josh from "@/assets/web/barbers/booking-list/josh-book.png";
 import Niko from "@/assets/web/barbers/booking-list/niko-book.svg";
 import Noah from "@/assets/web/barbers/booking-list/noah-book.png";
 import Amir from "@/assets/web/barbers/booking-list/amir-book.svg";
-import Jamie from "@/assets/web/barbers/booking-list/jamie-book.jpeg";
+import Jamie from "@/assets/web/barbers/booking-list/jamie-book.jpg";
 import Lucas from "@/assets/web/barbers/booking-list/lucas-book.jpg";
 import Can from "@/assets/web/barbers/booking-list/can-book.jpg";
 // import Hero from "@/assets/web/home/hero.svg";
