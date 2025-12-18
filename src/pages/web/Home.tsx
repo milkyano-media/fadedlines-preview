@@ -1,14 +1,13 @@
 import Layout from "@/components/web/WebLayout";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 import BgHero2 from "@/assets/web/home/hero.svg";
+import Logo from "@/assets/web/icons/logo.svg";
+import Instagram from "@/assets/web/icons/Instagram.svg";
+import Tiktok from "@/assets/web/icons/Tiktok.svg";
+import Maps from "@/assets/web/icons/Maps.svg";
+import GoogleReview from "@/assets/web/icons/GoogleReview.svg";
 import haircut from "@/assets/web/home/haircut.png";
 import beard from "@/assets/web/home/beard.png";
 
@@ -187,8 +186,11 @@ export default function Home() {
         <div className="top-0 absolute w-full h-full object-cover z-0 bg-gradient-to-b from-black/80 to-black" />
         <div className="flex flex-col justify-center items-center text-center gap-6 z-10">
           <div className="flex flex-col mb-12">
-            <h1 className="text-[#33FF00]">THE BEST</h1>
-            <h2>FOR YOUR HAIR</h2>
+            <img
+              src={Logo}
+              alt="Fadedlines Barber Shop"
+              className="w-[20rem] md:w-[25rem] h-auto"
+            />
           </div>
           <Button className="bg-[#454545] border-[0.5px] border-white text-2xl text-[#33FF00] font-bold px-16 py-7 w-max self-center hover:bg-[#454545]/80">
             {generateLink("BOOK NOW")}
@@ -214,7 +216,42 @@ export default function Home() {
             </p>
           </div>
           <p>Elevate your look, define your presence</p>
-          <sub>55 PORTMAN ST; OAKLEIGH VIC 3166; AUSTRALIA</sub>
+
+          <div className="flex gap-4 mt-4">
+            <a
+              href="https://www.instagram.com/fadedlinesbarbershop"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <img alt="Instagram" src={Instagram} className="w-12 h-auto" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@faded_lines"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <img alt="TikTok" src={Tiktok} className="w-12 h-auto" />
+            </a>
+            <a
+              href="https://maps.app.goo.gl/tBwhgZUekSLXHF4P6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <img alt="Google Maps" src={Maps} className="w-12 h-auto" />
+            </a>
+            <a
+              href="https://shorturl.at/72sRM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <img alt="Google Review" src={GoogleReview} className="w-12 h-auto" />
+            </a>
+          </div>
+
           <svg
             className="w-7 mt-20"
             viewBox="0 0 55 30"
@@ -230,8 +267,8 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col justify-center items-center">
-        <h2 className="text-[#33FF00]">OUR SERVICES</h2>
-        <p>Simple and Effective Pricing for that Fresh Looks</p>
+        <h2 className="text-[#33FF00]">AFRAID OF THE RESULTS?</h2>
+        <p>See It for Yourself!</p>
 
         <div className="flex gap-8 mt-20 px-6 md:w-max w-full overflow-x-auto">
           <div className="flex flex-col justify-between bg-[#262626] rounded-xl w-[250px] p-2">
@@ -286,60 +323,6 @@ export default function Home() {
           instagram_images_desktop={instagram_images_desktop}
           instagram_images_mobile={instagram_images_mobile}
         />
-      </section>
-
-      <section className="flex flex-col justify-center items-center md:pb-40">
-        <h2 className="text-[#33FF00] text-center">
-          FREQUENTLY ASKED <br />
-          QUESTIONS
-        </h2>
-        <div className="py-4 px-4 my-12 relative z-20 w-full md:w-2/3 mx-auto">
-          <Accordion
-            type="single"
-            collapsible
-            className="flex border pb-12 border-[#05FF00] rounded-[36px] p-12 pt-6 flex-col gap-8 bg-[#101010] shadow-[0px_4px_39px_31px_rgba(0,244,24,0.1)] font-light"
-          >
-            <AccordionItem
-              value="item-1"
-              className="py-2 px-4 border-b border-white/30 font-light group ease-in-out duration-300"
-            >
-              <AccordionTrigger className="relative z-10 ">
-                <div className="font-bold text-lg group-hover:translate-x-2 ease-in-out duration-300">
-                  Is it accessible?
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-stone-300 group-hover:translate-x-2 ease-in-out duration-300">
-                Yes. It adheres to the WAI-ARIA design pattern.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem
-              value="item-2"
-              className="py-2 px-4 border-b border-white/30 font-light group ease-in-out duration-300"
-            >
-              <AccordionTrigger className="relative z-10 ">
-                <div className="font-bold text-lg group-hover:translate-x-2 ease-in-out duration-300">
-                  Is it accessible?
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-stone-300 group-hover:translate-x-2 ease-in-out duration-300">
-                Yes. It adheres to the WAI-ARIA design pattern.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem
-              value="item-3"
-              className="py-2 px-4 border-b border-white/30 font-light group ease-in-out duration-300"
-            >
-              <AccordionTrigger className="relative z-10 ">
-                <div className="font-bold text-lg group-hover:translate-x-2 ease-in-out duration-300">
-                  Is it accessible?
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-stone-300 group-hover:translate-x-2 ease-in-out duration-300">
-                Yes. It adheres to the WAI-ARIA design pattern.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
       </section>
     </Layout>
   );
