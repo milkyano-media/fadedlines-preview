@@ -243,7 +243,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col justify-center items-center px-6">
+      {/* <section className="flex flex-col justify-center items-center px-6">
         <h2 className="text-[#33FF00] text-center">AFRAID OF THE RESULTS?</h2>
         <p className="text-2xl md:text-3xl font-bold text-center">See Them for Yourself!</p>
 
@@ -268,7 +268,7 @@ export default function Home() {
         <Button className="bg-[#454545] border-[0.5px] border-white text-2xl text-[#33FF00] font-bold px-16 py-7 w-max mt-10 hover:bg-[#454545]/80">
           {generateLink("BOOK NOW")}
         </Button>
-      </section>
+      </section> */}
 
       <section className="flex flex-col justify-center items-center">
         <h2 className="text-[#33FF00]">GALLERY</h2>
