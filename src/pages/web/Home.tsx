@@ -199,7 +199,16 @@ export default function Home() {
               href="https://www.instagram.com/fadedlinesbarbershop"
               target="_blank"
               rel="noopener noreferrer"
-              className="opacity-40 hover:opacity-100 transition-opacity"
+              className="transition-all duration-300 hover:scale-110"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+              }}
             >
               <img alt="Instagram" src={Instagram} className="w-12 h-auto" />
             </a>
@@ -207,7 +216,16 @@ export default function Home() {
               href="https://www.tiktok.com/@faded_lines"
               target="_blank"
               rel="noopener noreferrer"
-              className="opacity-40 hover:opacity-100 transition-opacity"
+              className="transition-all duration-300 hover:scale-110"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+              }}
             >
               <img alt="TikTok" src={Tiktok} className="w-12 h-auto" />
             </a>
@@ -215,7 +233,16 @@ export default function Home() {
               href="https://maps.app.goo.gl/tBwhgZUekSLXHF4P6"
               target="_blank"
               rel="noopener noreferrer"
-              className="opacity-40 hover:opacity-100 transition-opacity"
+              className="transition-all duration-300 hover:scale-110"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+              }}
             >
               <img alt="Google Maps" src={Maps} className="w-12 h-auto" />
             </a>
@@ -223,7 +250,16 @@ export default function Home() {
               href="https://shorturl.at/72sRM"
               target="_blank"
               rel="noopener noreferrer"
-              className="opacity-40 hover:opacity-100 transition-opacity"
+              className="transition-all duration-300 hover:scale-110"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+              }}
             >
               <img alt="Google Review" src={GoogleReview} className="w-12 h-auto" />
             </a>

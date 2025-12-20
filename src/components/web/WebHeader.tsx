@@ -97,7 +97,7 @@ const Header: React.FC = () => {
             <img
               src={IconNavbarGreen}
               alt="Fadedlines Barber Shop"
-              className="w-12 md:w-12 h-auto opacity-90"
+              className="w-8 md:w-10 h-auto opacity-90"
             />
           </Link>
         </div>

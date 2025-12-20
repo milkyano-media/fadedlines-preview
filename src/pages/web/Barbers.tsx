@@ -81,25 +81,25 @@ export default function Barbers() {
     }
   };
 
-  const generateLink = () => {
-    const squareLink: string =
-      "https://book.squareup.com/appointments/ud9yhcwfqc1fg0/location/LY7BZ89WAQ2QS/services";
+  // const generateLink = () => {
+  //   const squareLink: string =
+  //     "https://book.squareup.com/appointments/ud9yhcwfqc1fg0/location/LY7BZ89WAQ2QS/services";
 
-    let bookLink: string;
-    const parts = location.pathname.split("/");
-    if (parts[1] === "meta") {
-      bookLink = `/meta/book/services`;
-    } else {
-      bookLink = "/book/services";
-    }
+  //   let bookLink: string;
+  //   const parts = location.pathname.split("/");
+  //   if (parts[1] === "meta") {
+  //     bookLink = `/meta/book/services`;
+  //   } else {
+  //     bookLink = "/book/services";
+  //   }
 
-    const customize: boolean = true;
-    if (customize) {
-      return bookLink;
-    } else {
-      return squareLink;
-    }
-  };
+  //   const customize: boolean = true;
+  //   if (customize) {
+  //     return bookLink;
+  //   } else {
+  //     return squareLink;
+  //   }
+  // };
 
   const barberSvgs = [
     {
@@ -320,13 +320,13 @@ export default function Barbers() {
         </div>
       </section>
 
-      <section className="relative z-20 w-full min-h-screen flex flex-col justify-center md:max-w-screen-xl mx-auto pt-8 md:pt-12 pb-[12rem] md:pb-[4rem]">
-        <div className="container mx-auto px-4 md:px-8">
+      <section className="relative z-20 w-full min-h-screen flex flex-col justify-center md:max-w-screen-xl mx-auto pt-4 md:pt-12 pb-[8rem] md:pb-[4rem]">
+        <div className="container mx-auto px-2 md:px-8">
 
           {/* BARBER NAME CAROUSEL HEADER */}
           <div
             ref={carouselRef}
-            className="relative flex overflow-x-auto gap-2 md:gap-4 items-center mb-8 md:mb-12 pb-[5px] scrollbar-hide px-4"
+            className="relative flex overflow-x-auto gap-2 md:gap-4 items-center mb-4 md:mb-12 pb-[5px] scrollbar-hide px-2 md:px-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', overflowY: 'hidden' }}
           >
             {/* Left spacer untuk centering item pertama */}
@@ -341,7 +341,7 @@ export default function Barbers() {
                 <button
                   key={index}
                   onClick={() => handleNameClick(index)}
-                  className={`relative flex-shrink-0 px-6 md:px-8 py-3 pb-4 text-xl md:text-4xl font-bold font-poppins whitespace-nowrap transition-all duration-500 cursor-pointer ${
+                  className={`relative flex-shrink-0 px-4 md:px-8 py-2 pb-3 text-lg md:text-4xl font-bold font-poppins whitespace-nowrap transition-all duration-500 cursor-pointer ${
                     selectedBarber === index
                       ? "text-[#33FF00]"
                       : "text-stone-500"
@@ -398,14 +398,14 @@ export default function Barbers() {
           </div>
 
           {/* NEXT AVAILABLE TIME */}
-          <p className="text-stone-400 text-sm md:text-base text-center mb-6">
-            Next Available XXXX
+          <p className="text-stone-400 text-sm md:text-base text-center mb-3 md:mb-6">
+            Next Available XX:XX
           </p>
 
           {/* MAIN PREVIEW IMAGE */}
           <div
             ref={previewImageRef}
-            className="max-w-xs md:max-w-sm mx-auto mb-2 overflow-hidden rounded-xl shadow-lg"
+            className="max-w-[280px] md:max-w-sm mx-auto mb-1 md:mb-2 overflow-hidden rounded-xl shadow-lg"
           >
             <img
               src={galleryBarbers[selectedBarber].image}
@@ -415,24 +415,33 @@ export default function Barbers() {
           </div>
 
           {/* INSTAGRAM HANDLE */}
-          <p className="text-stone-400 text-sm md:text-base text-center mb-6">
+          <p className="text-stone-400 text-sm md:text-base text-center mb-4 md:mb-6">
             [@{galleryBarbers[selectedBarber].name.toLowerCase()}.blendz_]
           </p>
 
-          {/* GREEN DIVIDER LINE */}
-          <div className="w-full max-w-screen-md mx-auto mb-8">
-            <div className="h-[2px] bg-[#33FF00]"></div>
+          {/* GREEN DIVIDER LINE WITH CTA BUTTON */}
+          <div className="w-full max-w-screen-md mx-auto mb-5 md:mb-8 relative flex items-center justify-center">
+            <div className="absolute w-full h-[2px] bg-[#33FF00]"></div>
+            <div className="relative z-10 px-4 bg-black">
+              <Link to={`${generateRoute(`/${galleryBarbers[selectedBarber].name.toLowerCase()}/book/services`)}`}>
+                <Button
+                  className="bg-[#454545] text-[#33FF00] border border-[#33FF00] px-6 md:px-12 py-5 md:py-8 text-base md:text-2xl font-bold font-poppins rounded-full transform hover:scale-110 transition-transform duration-200 ease-in-out hover:bg-[#33FF00] hover:shadow-md hover:text-black hover:shadow-[#44813a]"
+                >
+                  Book Now
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* THUMBNAIL GRID (3 columns) */}
-          <div className="max-w-screen-md mx-auto grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mb-12">
+          <div className="max-w-screen-md mx-auto grid grid-cols-3 md:grid-cols-3 gap-1 md:gap-4 px-1 md:px-0">
             {galleryBarbers.map((barber, index) => (
               <div
                 key={index}
                 onClick={(e) => handleThumbnailClick(index, e)}
-                className={`aspect-square overflow-hidden rounded-lg bg-stone-800 transition-all duration-200 cursor-pointer ${
+                className={`aspect-square overflow-hidden rounded-md md:rounded-lg bg-stone-800 transition-all duration-200 cursor-pointer relative ${
                   selectedBarber === index
-                    ? "ring-4 ring-[#33FF00] scale-95"
+                    ? "ring-2 md:ring-4 ring-[#33FF00] scale-95"
                     : "hover:opacity-80 hover:scale-105"
                 }`}
               >
@@ -442,35 +451,15 @@ export default function Barbers() {
                   className="w-full h-full object-cover pointer-events-none"
                   loading="lazy"
                 />
+                {/* Barber name box - bottom left corner */}
+                <div className="absolute bottom-0 left-0 bg-black/85 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-br-none rounded-tl-none rounded-tr-md border border-[#33FF00]/30">
+                  <p className="text-white text-xs md:text-sm font-bold font-poppins">
+                    {barber.name}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
-
-          {/* CALL TO ACTION BUTTON */}
-          <div className="flex justify-center">
-            <Link to={generateLink()}>
-              <Button
-                className="border border-[#33FF00] px-8 md:px-12 py-6 md:py-8 text-lg md:text-2xl font-bold font-poppins rounded-full transform hover:scale-110 transition-transform duration-200 ease-in-out hover:bg-[#33FF00] hover:shadow-md hover:text-black hover:shadow-[#44813a]"
-              >
-                Book Now
-              </Button>
-            </Link>
-          </div>
-
-          {/* OLD CTA - VIEW BARBER PROFILE (Commented out) */}
-          {/* <div className="flex justify-center">
-            <Link
-              to={galleryBarbers[selectedBarber].landing
-                ? galleryBarbers[selectedBarber].link
-                : generateLink()}
-            >
-              <Button
-                className="border border-[#33FF00] px-8 md:px-12 py-6 md:py-8 text-lg md:text-2xl font-bold font-poppins rounded-full transform hover:scale-110 transition-transform duration-200 ease-in-out hover:bg-[#33FF00] hover:shadow-md hover:text-black hover:shadow-[#44813a]"
-              >
-                VIEW {galleryBarbers[selectedBarber].name}'S PROFILE
-              </Button>
-            </Link>
-          </div> */}
 
         </div>
       </section>
