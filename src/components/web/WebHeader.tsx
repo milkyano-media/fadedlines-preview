@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Logo from "@/components/react-svg/logo";
+import IconNavbarGreen from "@/assets/svg/icon-navbar-green.svg";
 import { Link, useLocation } from "react-router-dom";
 
 import {
@@ -94,7 +94,11 @@ const Header: React.FC = () => {
         </h1>
         <div className="flex flex-col justify-center items-center">
           <Link to={generateRoute("/home")}>
-            <Logo className="w-48 md:w-36 h-auto opacity-90 " />
+            <img
+              src={IconNavbarGreen}
+              alt="Fadedlines Barber Shop"
+              className="w-12 md:w-12 h-auto opacity-90"
+            />
           </Link>
         </div>
         <nav className="hidden lg:block sticky top-0">
