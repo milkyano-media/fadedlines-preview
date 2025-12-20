@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 
+// Preview images (for large preview)
 import Amir from "@/assets/web/barbers/amir.png";
 import Rayhan from "@/assets/web/barbers/rayhan.png";
 // import Anthony from "@/assets/web/barbers/anthony.png";
@@ -17,6 +18,18 @@ import Noah from "@/assets/web/barbers/noah.png";
 // import Jamie from "@/assets/web/barbers/jamie.png";
 import Lucas from "@/assets/web/barbers/lucas.png";
 import Can from "@/assets/web/barbers/can.png";
+
+// Gallery images (for grid thumbnails)
+import AmirGallery from "@/assets/web/barbers/barbers-gallery/amir.png";
+import RayhanGallery from "@/assets/web/barbers/barbers-gallery/rayhan.png";
+import JayGallery from "@/assets/web/barbers/barbers-gallery/jay.png";
+import EmmanGallery from "@/assets/web/barbers/barbers-gallery/emman.png";
+import DejanGallery from "@/assets/web/barbers/barbers-gallery/dejan.png";
+import JoshGallery from "@/assets/web/barbers/barbers-gallery/josh.png";
+import NikoGallery from "@/assets/web/barbers/barbers-gallery/niko.png";
+import NoahGallery from "@/assets/web/barbers/barbers-gallery/noah.png";
+import LucasGallery from "@/assets/web/barbers/barbers-gallery/lucas.png";
+import CanGallery from "@/assets/web/barbers/barbers-gallery/can.png";
 import { Link, useLocation } from "react-router-dom";
 import BgHero2 from "@/assets/web/home/hero.svg";
 // import Hero from "@/assets/web/home/hero.svg";
@@ -104,61 +117,73 @@ export default function Barbers() {
   const barberSvgs = [
     {
       svg: Amir,
+      thumbnail: AmirGallery,
       link: generateRoute("/amir"),
       landing: true,
     },
     {
       svg: Lucas,
+      thumbnail: LucasGallery,
       link: generateRoute("/lucas"),
       landing: true,
     },
     {
       svg: Can,
+      thumbnail: CanGallery,
       link: generateRoute("/can"),
       landing: true,
     },
     {
       svg: Rayhan,
+      thumbnail: RayhanGallery,
       link: generateRoute("/rayhan"),
       landing: true,
     },
     {
       svg: Josh,
+      thumbnail: JoshGallery,
       link: generateRoute("/josh"),
       landing: true,
     },
     {
       svg: Noah,
+      thumbnail: NoahGallery,
       link: generateRoute("/noah"),
       landing: true,
     },
     {
       svg: Jay,
+      thumbnail: JayGallery,
       link: generateRoute("/jay"),
       landing: true,
     },
     {
       svg: Emman,
+      thumbnail: EmmanGallery,
       link: generateRoute("/emman"),
       landing: true,
     },
     // {
     //   svg: Jamie,
+    //   thumbnail: JamieGallery,
     //   link: generateRoute("/jamie"),
     //   landing: false,
     // },
     // {
     //   svg: Anthony,
+    //   thumbnail: AnthonyGallery,
     //   link: generateRoute("/anthony"),
     //   landing: true,
     // },
     {
       svg: Niko,
+      thumbnail: NikoGallery,
       link: generateRoute("/niko"),
       landing: true,
     },
     {
       svg: Dejan,
+      thumbnail: DejanGallery,
       link: generateRoute("/dejan"),
       landing: false,
     },
@@ -167,7 +192,8 @@ export default function Barbers() {
 
   // Transform barberSvgs into gallery-friendly format
   const galleryBarbers = barberSvgs.map((barber, index) => ({
-    image: barber.svg,
+    image: barber.svg, // For preview/placeholder
+    thumbnail: barber.thumbnail, // For grid thumbnails
     name: barber.link.split('/').pop()?.toUpperCase() || `BARBER ${index + 1}`,
     link: barber.link,
     landing: barber.landing,
@@ -439,24 +465,24 @@ export default function Barbers() {
               <div
                 key={index}
                 onClick={(e) => handleThumbnailClick(index, e)}
-                className={`aspect-square overflow-hidden rounded-md md:rounded-lg bg-stone-800 transition-all duration-200 cursor-pointer relative ${
+                className={`aspect-square overflow-hidden rounded-md md:rounded-lg transition-all duration-200 cursor-pointer relative ${
                   selectedBarber === index
-                    ? "ring-2 md:ring-4 ring-[#33FF00] scale-95"
+                    ? "ring-2 md:ring-4 ring-[#33FF00] scale-100"
                     : "hover:opacity-80 hover:scale-105"
                 }`}
               >
                 <img
-                  src={barber.image}
+                  src={barber.thumbnail}
                   alt={barber.name}
                   className="w-full h-full object-cover pointer-events-none"
                   loading="lazy"
                 />
                 {/* Barber name box - bottom left corner */}
-                <div className="absolute bottom-0 left-0 bg-black/85 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-br-none rounded-tl-none rounded-tr-md border border-[#33FF00]/30">
+                {/* <div className="absolute bottom-0 left-0 bg-black/85 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-br-none rounded-tl-none rounded-tr-md border border-[#33FF00]/30">
                   <p className="text-white text-xs md:text-sm font-bold font-poppins">
                     {barber.name}
                   </p>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
