@@ -33,7 +33,17 @@ const WebFooter: React.FC = () => {
             {generateLink("BOOK NOW")}
           </Button>
 
-          <div className="flex gap-4 mt-4">
+          {/* FadedLines Logo */}
+          <img
+            src={Logo}
+            alt="FadedLines Barbershop Logo"
+            className="w-48 md:w-64 h-auto mt-8"
+          />
+
+          {/* Visit us on text */}
+          <h4 className="text-sm md:text-base font-poppins font-medium mt-6 text-white">Visit us on:</h4>
+
+          <div className="flex gap-4 mt-0">
             <a
               href="https://www.instagram.com/fadedlinesbarbershop"
               target="_blank"

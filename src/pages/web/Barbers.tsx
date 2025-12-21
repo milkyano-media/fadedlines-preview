@@ -2,20 +2,18 @@ import Layout from "@/components/web/WebLayout";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link, useLocation } from "react-router-dom";
+import BgHero2 from "@/assets/web/home/hero.svg";
 
 // Preview images (for large preview)
 import Amir from "@/assets/web/barbers/amir.png";
 import Rayhan from "@/assets/web/barbers/rayhan.png";
-// import Anthony from "@/assets/web/barbers/anthony.png";
 import Jay from "@/assets/web/barbers/jay.png";
-// import Wyatt from "@/assets/web/barbers/wyatt.png";
 import Emman from "@/assets/web/barbers/emman.png";
 import Dejan from "@/assets/web/barbers/dejan.png";
-// import Christos from "@/assets/web/barbers/christos.png";
 import Josh from "@/assets/web/barbers/josh.png";
 import Niko from "@/assets/web/barbers/niko.png";
 import Noah from "@/assets/web/barbers/noah.png";
-// import Jamie from "@/assets/web/barbers/jamie.png";
 import Lucas from "@/assets/web/barbers/lucas.png";
 import Can from "@/assets/web/barbers/can.png";
 
@@ -30,9 +28,6 @@ import NikoGallery from "@/assets/web/barbers/barbers-gallery/niko.png";
 import NoahGallery from "@/assets/web/barbers/barbers-gallery/noah.png";
 import LucasGallery from "@/assets/web/barbers/barbers-gallery/lucas.png";
 import CanGallery from "@/assets/web/barbers/barbers-gallery/can.png";
-import { Link, useLocation } from "react-router-dom";
-import BgHero2 from "@/assets/web/home/hero.svg";
-// import Hero from "@/assets/web/home/hero.svg";
 
 export default function Barbers() {
   localStorage.removeItem("booking_source");
@@ -163,18 +158,6 @@ export default function Barbers() {
       link: generateRoute("/emman"),
       landing: true,
     },
-    // {
-    //   svg: Jamie,
-    //   thumbnail: JamieGallery,
-    //   link: generateRoute("/jamie"),
-    //   landing: false,
-    // },
-    // {
-    //   svg: Anthony,
-    //   thumbnail: AnthonyGallery,
-    //   link: generateRoute("/anthony"),
-    //   landing: true,
-    // },
     {
       svg: Niko,
       thumbnail: NikoGallery,
@@ -431,12 +414,13 @@ export default function Barbers() {
           {/* MAIN PREVIEW IMAGE */}
           <div
             ref={previewImageRef}
-            className="max-w-[280px] md:max-w-sm mx-auto mb-1 md:mb-2 overflow-hidden rounded-xl shadow-lg"
+            className="max-w-[280px] md:max-w-sm mx-auto mb-1 md:mb-2 overflow-hidden rounded-xl shadow-lg aspect-[0.7]"
           >
             <img
+              key={selectedBarber}
               src={galleryBarbers[selectedBarber].image}
               alt={galleryBarbers[selectedBarber].name}
-              className="w-full object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
 
