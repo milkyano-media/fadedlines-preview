@@ -444,17 +444,19 @@ export default function Barbers() {
           </div>
 
           {/* THUMBNAIL GRID (3 columns) */}
-          <div className="max-w-screen-md mx-auto grid grid-cols-3 md:grid-cols-3 gap-1 md:gap-4 px-1 md:px-0">
-            {galleryBarbers.map((barber, index) => (
-              <div
-                key={index}
-                onClick={(e) => handleThumbnailClick(index, e)}
-                className={`aspect-square overflow-hidden rounded-md md:rounded-lg transition-all duration-200 cursor-pointer relative ${
-                  selectedBarber === index
-                    ? "ring-2 md:ring-4 ring-[#33FF00] scale-100"
-                    : "hover:opacity-80 hover:scale-105"
-                }`}
-              >
+          <div className="max-w-screen-md mx-auto relative px-1 md:px-0">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-4 md:gap-9">
+              {galleryBarbers.map((barber, index) => (
+                <div
+                  key={index}
+                  onClick={(e) => handleThumbnailClick(index, e)}
+                  className={`aspect-square overflow-hidden rounded-md md:rounded-lg transition-all duration-200 cursor-pointer relative ${
+                    selectedBarber === index
+                      ? "ring-2 md:ring-4 ring-[#33FF00] scale-100"
+                      : "hover:opacity-80 hover:scale-105"
+                  }`}
+                  style={index === 9 ? { gridColumnStart: 2 } : {}}
+                >
                 <img
                   src={barber.thumbnail}
                   alt={barber.name}
@@ -468,7 +470,24 @@ export default function Barbers() {
                   </p>
                 </div> */}
               </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Grid Pattern Divider Lines */}
+            {/* Vertical line between column 1 and 2 */}
+            <div className="absolute top-0 left-[33.33%] w-[1px] md:w-[2px] h-full bg-[#33FF00] pointer-events-none" style={{ transform: 'translateX(-0.5px)' }}></div>
+
+            {/* Vertical line between column 2 and 3 */}
+            <div className="absolute top-0 left-[66.66%] w-[1px] md:w-[2px] h-full bg-[#33FF00] pointer-events-none" style={{ transform: 'translateX(-0.5px)' }}></div>
+
+            {/* Horizontal line after row 1 (25% down) */}
+            <div className="absolute left-0 top-[25%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
+
+            {/* Horizontal line after row 2 (50% down) */}
+            <div className="absolute left-0 top-[50%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
+
+            {/* Horizontal line after row 3 (75% down) */}
+            <div className="absolute left-0 top-[75%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
           </div>
 
         </div>
