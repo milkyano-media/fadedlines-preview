@@ -118,7 +118,7 @@ const WebFooter: React.FC = () => {
 
       <section className="relative z-10">
         <div className="container mx-auto py-12 flex flex-col md:flex-row  justify-between relative z-0">
-          <div className="flex flex-col pb-12 md:py-0 gap-10">
+          {/* <div className="flex flex-col pb-12 md:py-0 gap-10">
             <img
               src={Logo}
               alt="barber shop faded lines"
@@ -172,7 +172,7 @@ const WebFooter: React.FC = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
           <div className="grid grid-cols-1 md:grid-cols-3 w-full md:w-2/3 gap-4 md:gap-0 text-sm">
             <div className="flex flex-col gap-4 relative z-40">
               <h3 className="text-[#33FF00]">Pages</h3>
