@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Logo from "@/assets/web/icons/logo.svg";
-import Facebook from "@/assets/web/icons/Facebook.svg";
+// import Facebook from "@/assets/web/icons/Facebook.svg";
 import Instagram from "@/assets/web/icons/Instagram.svg";
-import Youtube from "@/assets/web/icons/Youtube.svg";
+// import Youtube from "@/assets/web/icons/Youtube.svg";
 import Tiktok from "@/assets/web/icons/Tiktok.svg";
 import Maps from "@/assets/web/icons/Maps.svg";
 import GoogleReview from "@/assets/web/icons/GoogleReview.svg";
@@ -33,7 +33,17 @@ const WebFooter: React.FC = () => {
             {generateLink("BOOK NOW")}
           </Button>
 
-          <div className="flex gap-4 mt-4">
+          {/* FadedLines Logo */}
+          <img
+            src={Logo}
+            alt="FadedLines Barbershop Logo"
+            className="w-48 md:w-64 h-auto mt-8"
+          />
+
+          {/* Visit us on text */}
+          <h4 className="text-sm md:text-base font-poppins font-medium mt-6 text-white">Visit us on:</h4>
+
+          <div className="flex gap-4 mt-0">
             <a
               href="https://www.instagram.com/fadedlinesbarbershop"
               target="_blank"
@@ -107,8 +117,8 @@ const WebFooter: React.FC = () => {
       </section>
 
       <section className="relative z-10">
-        <div className="container mx-auto py-12 flex flex-col md:flex-row  justify-between relative z-0">
-          <div className="flex flex-col pb-12 md:py-0 gap-10">
+        <div className="container mx-auto py-12 flex flex-col md:flex-row justify-center relative z-0">
+          {/* <div className="flex flex-col pb-12 md:py-0 gap-10">
             <img
               src={Logo}
               alt="barber shop faded lines"
@@ -162,8 +172,8 @@ const WebFooter: React.FC = () => {
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 w-full md:w-2/3 gap-4 md:gap-0 text-sm">
+          </div> */}
+          <div className="grid grid-cols-1 md:grid-cols-3 w-full md:w-2/3 mx-auto gap-4 md:gap-0 text-sm mr-6">
             <div className="flex flex-col gap-4 relative z-40">
               <h3 className="text-[#33FF00]">Pages</h3>
               <ul className="flex flex-col font-light gap-2 text-stone-400">

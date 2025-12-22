@@ -2,24 +2,32 @@ import Layout from "@/components/web/WebLayout";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link, useLocation } from "react-router-dom";
+import BgHero2 from "@/assets/web/home/hero.svg";
 
+// Preview images (for large preview)
 import Amir from "@/assets/web/barbers/amir.png";
 import Rayhan from "@/assets/web/barbers/rayhan.png";
-// import Anthony from "@/assets/web/barbers/anthony.png";
 import Jay from "@/assets/web/barbers/jay.png";
-// import Wyatt from "@/assets/web/barbers/wyatt.png";
 import Emman from "@/assets/web/barbers/emman.png";
 import Dejan from "@/assets/web/barbers/dejan.png";
-// import Christos from "@/assets/web/barbers/christos.png";
 import Josh from "@/assets/web/barbers/josh.png";
 import Niko from "@/assets/web/barbers/niko.png";
 import Noah from "@/assets/web/barbers/noah.png";
-// import Jamie from "@/assets/web/barbers/jamie.png";
 import Lucas from "@/assets/web/barbers/lucas.png";
 import Can from "@/assets/web/barbers/can.png";
-import { Link, useLocation } from "react-router-dom";
-import BgHero2 from "@/assets/web/home/hero.svg";
-// import Hero from "@/assets/web/home/hero.svg";
+
+// Gallery images (for grid thumbnails)
+import AmirGallery from "@/assets/web/barbers/barbers-gallery/amir.png";
+import RayhanGallery from "@/assets/web/barbers/barbers-gallery/rayhan.png";
+import JayGallery from "@/assets/web/barbers/barbers-gallery/jay.png";
+import EmmanGallery from "@/assets/web/barbers/barbers-gallery/emman.png";
+import DejanGallery from "@/assets/web/barbers/barbers-gallery/dejan.png";
+import JoshGallery from "@/assets/web/barbers/barbers-gallery/josh.png";
+import NikoGallery from "@/assets/web/barbers/barbers-gallery/niko.png";
+import NoahGallery from "@/assets/web/barbers/barbers-gallery/noah.png";
+import LucasGallery from "@/assets/web/barbers/barbers-gallery/lucas.png";
+import CanGallery from "@/assets/web/barbers/barbers-gallery/can.png";
 
 export default function Barbers() {
   localStorage.removeItem("booking_source");
@@ -104,61 +112,61 @@ export default function Barbers() {
   const barberSvgs = [
     {
       svg: Amir,
+      thumbnail: AmirGallery,
       link: generateRoute("/amir"),
       landing: true,
     },
     {
       svg: Lucas,
+      thumbnail: LucasGallery,
       link: generateRoute("/lucas"),
       landing: true,
     },
     {
       svg: Can,
+      thumbnail: CanGallery,
       link: generateRoute("/can"),
       landing: true,
     },
     {
       svg: Rayhan,
+      thumbnail: RayhanGallery,
       link: generateRoute("/rayhan"),
       landing: true,
     },
     {
       svg: Josh,
+      thumbnail: JoshGallery,
       link: generateRoute("/josh"),
       landing: true,
     },
     {
       svg: Noah,
+      thumbnail: NoahGallery,
       link: generateRoute("/noah"),
       landing: true,
     },
     {
       svg: Jay,
+      thumbnail: JayGallery,
       link: generateRoute("/jay"),
       landing: true,
     },
     {
       svg: Emman,
+      thumbnail: EmmanGallery,
       link: generateRoute("/emman"),
       landing: true,
     },
-    // {
-    //   svg: Jamie,
-    //   link: generateRoute("/jamie"),
-    //   landing: false,
-    // },
-    // {
-    //   svg: Anthony,
-    //   link: generateRoute("/anthony"),
-    //   landing: true,
-    // },
     {
       svg: Niko,
+      thumbnail: NikoGallery,
       link: generateRoute("/niko"),
       landing: true,
     },
     {
       svg: Dejan,
+      thumbnail: DejanGallery,
       link: generateRoute("/dejan"),
       landing: false,
     },
@@ -167,7 +175,8 @@ export default function Barbers() {
 
   // Transform barberSvgs into gallery-friendly format
   const galleryBarbers = barberSvgs.map((barber, index) => ({
-    image: barber.svg,
+    image: barber.svg, // For preview/placeholder
+    thumbnail: barber.thumbnail, // For grid thumbnails
     name: barber.link.split('/').pop()?.toUpperCase() || `BARBER ${index + 1}`,
     link: barber.link,
     landing: barber.landing,
@@ -326,8 +335,8 @@ export default function Barbers() {
           {/* BARBER NAME CAROUSEL HEADER */}
           <div
             ref={carouselRef}
-            className="relative flex overflow-x-auto gap-2 md:gap-4 items-center mb-4 md:mb-12 pb-[5px] scrollbar-hide px-2 md:px-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', overflowY: 'hidden' }}
+            className="relative flex overflow-x-auto overflow-y-hidden gap-2 md:gap-4 items-center mb-4 md:mb-12 pt-4 pb-[5px] scrollbar-hide px-2 md:px-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {/* Left spacer untuk centering item pertama */}
             <div className="flex-shrink-0" style={{ width: 'calc(50vw - 150px)' }}></div>
@@ -341,7 +350,7 @@ export default function Barbers() {
                 <button
                   key={index}
                   onClick={() => handleNameClick(index)}
-                  className={`relative flex-shrink-0 px-4 md:px-8 py-2 pb-3 text-lg md:text-4xl font-bold font-poppins whitespace-nowrap transition-all duration-500 cursor-pointer ${
+                  className={`relative flex-shrink-0 flex flex-col items-center gap-2 md:gap-3 px-4 md:px-8 py-2 transition-all duration-500 cursor-pointer ${
                     selectedBarber === index
                       ? "text-[#33FF00]"
                       : "text-stone-500"
@@ -351,12 +360,30 @@ export default function Barbers() {
                     transform: `scale(${scale})`,
                   }}
                 >
-                  {barber.name}
+                  {/* Thumbnail Image */}
+                  <div className={`w-12 h-12 md:w-20 md:h-20 rounded-md overflow-hidden ${
+                    selectedBarber === index
+                      ? "ring-2 ring-[#33FF00]"
+                      : ""
+                  }`}>
+                    <img
+                      src={barber.thumbnail}
+                      alt={barber.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-                  {/* GREEN UNDERLINE for active */}
-                  {selectedBarber === index && (
-                    <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#33FF00]"></div>
-                  )}
+                  {/* Barber Name with underline wrapper */}
+                  <div className="relative pb-3">
+                    <span className="text-lg md:text-4xl font-bold font-poppins whitespace-nowrap">
+                      {barber.name}
+                    </span>
+
+                    {/* GREEN UNDERLINE for active */}
+                    {selectedBarber === index && (
+                      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#33FF00]"></div>
+                    )}
+                  </div>
 
                   {/* DIMMED GREEN SPOTLIGHT GRADIENT EFFECT - From Bottom Up */}
                   {selectedBarber === index && (
@@ -405,12 +432,13 @@ export default function Barbers() {
           {/* MAIN PREVIEW IMAGE */}
           <div
             ref={previewImageRef}
-            className="max-w-[280px] md:max-w-sm mx-auto mb-1 md:mb-2 overflow-hidden rounded-xl shadow-lg"
+            className="max-w-[280px] md:max-w-sm mx-auto mb-1 md:mb-2 overflow-hidden rounded-xl shadow-lg aspect-[0.7]"
           >
             <img
+              key={selectedBarber}
               src={galleryBarbers[selectedBarber].image}
               alt={galleryBarbers[selectedBarber].name}
-              className="w-full object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
 
@@ -434,31 +462,46 @@ export default function Barbers() {
           </div>
 
           {/* THUMBNAIL GRID (3 columns) */}
-          <div className="max-w-screen-md mx-auto grid grid-cols-3 md:grid-cols-3 gap-1 md:gap-4 px-1 md:px-0">
-            {galleryBarbers.map((barber, index) => (
-              <div
-                key={index}
-                onClick={(e) => handleThumbnailClick(index, e)}
-                className={`aspect-square overflow-hidden rounded-md md:rounded-lg bg-stone-800 transition-all duration-200 cursor-pointer relative ${
-                  selectedBarber === index
-                    ? "ring-2 md:ring-4 ring-[#33FF00] scale-95"
-                    : "hover:opacity-80 hover:scale-105"
-                }`}
-              >
+          <div className="max-w-screen-md mx-auto relative px-1 md:px-0">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-4 md:gap-9">
+              {galleryBarbers.map((barber, index) => (
+                <div
+                  key={index}
+                  onClick={(e) => handleThumbnailClick(index, e)}
+                  className={`aspect-square overflow-hidden rounded-md md:rounded-lg transition-all duration-200 cursor-pointer relative ${
+                    selectedBarber === index
+                      ? "ring-2 md:ring-4 ring-[#33FF00] scale-100"
+                      : "hover:opacity-80 hover:scale-105"
+                  }`}
+                >
                 <img
-                  src={barber.image}
+                  src={barber.thumbnail}
                   alt={barber.name}
                   className="w-full h-full object-cover pointer-events-none"
                   loading="lazy"
                 />
                 {/* Barber name box - bottom left corner */}
-                <div className="absolute bottom-0 left-0 bg-black/85 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-br-none rounded-tl-none rounded-tr-md border border-[#33FF00]/30">
+                {/* <div className="absolute bottom-0 left-0 bg-black/85 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-br-none rounded-tl-none rounded-tr-md border border-[#33FF00]/30">
                   <p className="text-white text-xs md:text-sm font-bold font-poppins">
                     {barber.name}
                   </p>
-                </div>
+                </div> */}
               </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Plus Pattern Divider Lines */}
+            {/* Vertical line between column 1 and 2 */}
+            <div className="absolute top-0 left-[33%] w-[1px] md:w-[2px] h-[75%] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateX(-0.5px)' }}></div>
+
+            {/* Vertical line between column 2 and 3 */}
+            <div className="absolute top-0 left-[66.66%] w-[1px] md:w-[2px] h-[75%] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateX(-0.5px)' }}></div>
+
+            {/* Horizontal line after row 1 (33.33% down) */}
+            <div className="absolute left-0 top-[24.75%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
+
+            {/* Horizontal line after row 2 (66.66% down) */}
+            <div className="absolute left-0 top-[49.75%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
           </div>
 
         </div>
