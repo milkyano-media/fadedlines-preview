@@ -332,14 +332,14 @@ export default function Barbers() {
                 <button
                   key={index}
                   onClick={() => handleNameClick(index)}
-                  className={`relative flex-shrink-0 flex flex-col items-center gap-0.5 md:gap-2 px-3 md:px-6 py-1 transition-all duration-500 cursor-pointer ${
+                  className={`relative flex-shrink-0 flex flex-col items-center gap-1 md:gap-2 px-3 md:px-6 py-1 transition-all duration-500 cursor-pointer ${
                     selectedBarber === index
                       ? "text-[#33FF00]"
                       : "text-stone-500"
                   }`}
                 >
                   {/* Thumbnail Image */}
-                  <div className={`w-16 h-16 md:w-32 md:h-32 rounded-md overflow-hidden ${
+                  <div className={`w-20 h-20 md:w-32 md:h-32 rounded-md overflow-hidden ${
                     selectedBarber === index
                       ? "ring-2 ring-[#33FF00]"
                       : ""
@@ -353,13 +353,13 @@ export default function Barbers() {
 
                   {/* Barber Name with underline wrapper */}
                   <div className="relative pb-0">
-                    <span className="text-base md:text-4xl font-bold font-poppins whitespace-nowrap">
+                    <span className="text-lg md:text-4xl font-bold font-poppins whitespace-nowrap">
                       {barber.name}
                     </span>
 
                     {/* GREEN UNDERLINE for active */}
                     {selectedBarber === index && (
-                      <div className="absolute bottom-[-8px] md:bottom-[-12px] left-0 right-0 h-1 md:h-[4px] bg-[#33FF00]"></div>
+                      <div className="absolute bottom-[-8px] md:bottom-[-12px] left-0 right-0 h-[2px] md:h-[4px] bg-[#33FF00]"></div>
                     )}
                   </div>
 
