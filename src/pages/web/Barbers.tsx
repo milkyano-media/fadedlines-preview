@@ -310,11 +310,6 @@ export default function Barbers() {
         />
         <div className="top-0 absolute w-full h-full object-cover z-0 bg-gradient-to-b from-black/80 to-black" />
         <div className="flex flex-col justify-center items-center text-center gap-6 z-10">
-          <div className="flex flex-col mb-12">
-            <h2>MEET OUR</h2>
-            <h2 className="text-[#33FF00]">BARBERS</h2>
-          </div>
-
           <svg
             className="w-7 mt-8"
             viewBox="0 0 55 30"
@@ -361,7 +356,7 @@ export default function Barbers() {
                   }}
                 >
                   {/* Thumbnail Image */}
-                  <div className={`w-12 h-12 md:w-20 md:h-20 rounded-md overflow-hidden ${
+                  <div className={`w-20 h-20 md:w-32 md:h-32 rounded-md overflow-hidden ${
                     selectedBarber === index
                       ? "ring-2 ring-[#33FF00]"
                       : ""
@@ -381,7 +376,7 @@ export default function Barbers() {
 
                     {/* GREEN UNDERLINE for active */}
                     {selectedBarber === index && (
-                      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#33FF00]"></div>
+                      <div className="absolute bottom-0 left-0 right-0 h-1 md:h-[8px] bg-[#33FF00]"></div>
                     )}
                   </div>
 
@@ -424,15 +419,10 @@ export default function Barbers() {
             <div className="flex-shrink-0" style={{ width: 'calc(50vw - 150px)' }}></div>
           </div>
 
-          {/* NEXT AVAILABLE TIME */}
-          <p className="text-stone-400 text-sm md:text-base text-center mb-3 md:mb-6">
-            Next Available XX:XX
-          </p>
-
           {/* MAIN PREVIEW IMAGE */}
           <div
             ref={previewImageRef}
-            className="max-w-[280px] md:max-w-sm mx-auto mb-1 md:mb-2 overflow-hidden rounded-xl shadow-lg aspect-[0.7]"
+            className="max-w-[280px] md:max-w-sm mx-auto mb-8 md:mb-12 overflow-hidden rounded-xl shadow-lg aspect-[0.7]"
           >
             <img
               key={selectedBarber}
@@ -441,11 +431,6 @@ export default function Barbers() {
               className="w-full h-full object-cover"
             />
           </div>
-
-          {/* INSTAGRAM HANDLE */}
-          <p className="text-stone-400 text-sm md:text-base text-center mb-4 md:mb-6">
-            [@{galleryBarbers[selectedBarber].name.toLowerCase()}.blendz_]
-          </p>
 
           {/* GREEN DIVIDER LINE WITH CTA BUTTON */}
           <div className="w-full max-w-screen-md mx-auto mb-5 md:mb-8 relative flex items-center justify-center">
