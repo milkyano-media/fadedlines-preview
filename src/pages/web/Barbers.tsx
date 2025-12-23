@@ -1,9 +1,10 @@
 import Layout from "@/components/web/WebLayout";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation } from "react-router-dom";
 import BgHero2 from "@/assets/web/home/hero.svg";
+import useEmblaCarousel from "embla-carousel-react";
 
 // Preview images (for large preview)
 import Amir from "@/assets/web/barbers/amir.png";
@@ -35,7 +36,13 @@ export default function Barbers() {
   // Gallery state management
   const [selectedBarber, setSelectedBarber] = useState(0);
   const previewImageRef = useRef<HTMLDivElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Embla Carousel setup with infinite loop
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'center',
+    containScroll: false,
+  });
 
   const getQueryParams = (search: string) => {
     return new URLSearchParams(search);
@@ -173,13 +180,34 @@ export default function Barbers() {
     landing: barber.landing,
   }));
 
+  // Embla: Sync selected slide with state
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedBarber(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    onSelect();
+    emblaApi.on('select', onSelect);
+
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
   // Interaction handlers for gallery
   const handleThumbnailClick = (index: number, e?: React.MouseEvent) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    setSelectedBarber(index);
+
+    // Use Embla to scroll to the selected index
+    if (emblaApi) {
+      emblaApi.scrollTo(index);
+    }
 
     // Smooth scroll to preview with offset
     setTimeout(() => {
@@ -193,7 +221,11 @@ export default function Barbers() {
   };
 
   const handleNameClick = (index: number) => {
-    setSelectedBarber(index);
+    // Use Embla to scroll to the selected index
+    if (emblaApi) {
+      emblaApi.scrollTo(index);
+    }
+
     // Scroll to preview
     setTimeout(() => {
       if (previewImageRef.current) {
@@ -204,53 +236,6 @@ export default function Barbers() {
       }
     }, 50);
   };
-
-  // Auto-center the carousel when selection changes OR on initial mount
-  useEffect(() => {
-    if (carouselRef.current) {
-      const carousel = carouselRef.current;
-      const buttons = carousel.querySelectorAll('button');
-      const selectedButton = buttons[selectedBarber];
-
-      if (selectedButton) {
-        // Use setTimeout to ensure DOM is fully rendered
-        setTimeout(() => {
-          const carouselWidth = carousel.offsetWidth;
-          const buttonLeft = selectedButton.offsetLeft;
-          const buttonWidth = selectedButton.offsetWidth;
-          const scrollPosition = buttonLeft - (carouselWidth / 2) + (buttonWidth / 2);
-
-          carousel.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
-    }
-  }, [selectedBarber]);
-
-  // Initial centering on mount
-  useEffect(() => {
-    if (carouselRef.current) {
-      const carousel = carouselRef.current;
-      const buttons = carousel.querySelectorAll('button');
-      const selectedButton = buttons[0]; // Center first barber initially
-
-      if (selectedButton) {
-        setTimeout(() => {
-          const carouselWidth = carousel.offsetWidth;
-          const buttonLeft = selectedButton.offsetLeft;
-          const buttonWidth = selectedButton.offsetWidth;
-          const scrollPosition = buttonLeft - (carouselWidth / 2) + (buttonWidth / 2);
-
-          carousel.scrollTo({
-            left: scrollPosition,
-            behavior: 'auto' // No animation on initial load
-          });
-        }, 100);
-      }
-    }
-  }, []); // Empty dependency array = run once on mount
 
   useEffect(() => {
     // Create a new style element
@@ -316,28 +301,28 @@ export default function Barbers() {
       </section>
 
       <section className="relative z-20 w-full flex flex-col justify-center md:max-w-screen-xl mx-auto pt-4 md:pt-8 pb-[-4rem] md:pb-[4rem]">
-        <div className="container mx-auto px-2 md:px-8 scale-75 md:scale-100 origin-top">
+        <div className="container mx-auto px-2 md:px-8 scale-[85%] md:scale-100 origin-top">
 
           {/* BARBER NAME CAROUSEL HEADER */}
           <div
-            ref={carouselRef}
-            className="relative flex overflow-x-auto overflow-y-hidden gap-2 md:gap-4 items-center mb-6 md:mb-8 pt-2 pb-[5px] scrollbar-hide px-2 md:px-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            ref={emblaRef}
+            className="relative overflow-hidden mb-6 md:mb-8 pt-2 pb-[5px]"
           >
-            {/* Left spacer untuk centering item pertama */}
-            <div className="flex-shrink-0" style={{ width: 'calc(50vw - 150px)' }}></div>
-
-            {galleryBarbers.map((barber, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => handleNameClick(index)}
-                  className={`relative flex-shrink-0 flex flex-col items-center gap-1 md:gap-2 px-3 md:px-6 py-1 transition-all duration-500 cursor-pointer ${
-                    selectedBarber === index
-                      ? "text-[#33FF00]"
-                      : "text-stone-500"
-                  }`}
-                >
+            <div className="flex items-center">
+              {galleryBarbers.map((barber, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex-[0_0_auto] min-w-0 px-2 md:px-4"
+                  >
+                    <button
+                      onClick={() => handleNameClick(index)}
+                      className={`relative flex flex-col items-center gap-1 md:gap-2 px-3 md:px-6 py-1 transition-all duration-500 cursor-pointer ${
+                        selectedBarber === index
+                          ? "text-[#33FF00]"
+                          : "text-stone-500"
+                      }`}
+                    >
                   {/* Thumbnail Image */}
                   <div className={`w-20 h-20 md:w-32 md:h-32 rounded-md overflow-hidden ${
                     selectedBarber === index
@@ -359,7 +344,7 @@ export default function Barbers() {
 
                     {/* GREEN UNDERLINE for active */}
                     {selectedBarber === index && (
-                      <div className="absolute bottom-[-8px] md:bottom-[-12px] left-0 right-0 h-[2px] md:h-[4px] bg-[#33FF00]"></div>
+                      <div className="absolute bottom-[-8px] md:bottom-[-10px] left-0 right-0 h-[2px] md:h-[4px] bg-[#33FF00]"></div>
                     )}
                   </div>
 
@@ -394,12 +379,11 @@ export default function Barbers() {
                       </div>
                     </>
                   )}
-                </button>
-              );
-            })}
-
-            {/* Right spacer untuk centering item terakhir */}
-            <div className="flex-shrink-0" style={{ width: 'calc(50vw - 150px)' }}></div>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* MAIN PREVIEW IMAGE */}
