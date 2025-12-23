@@ -10,7 +10,6 @@ import Amir from "@/assets/web/barbers/amir.png";
 import Rayhan from "@/assets/web/barbers/rayhan.png";
 import Jay from "@/assets/web/barbers/jay.png";
 import Emman from "@/assets/web/barbers/emman.png";
-import Dejan from "@/assets/web/barbers/dejan.png";
 import Josh from "@/assets/web/barbers/josh.png";
 import Niko from "@/assets/web/barbers/niko.png";
 import Noah from "@/assets/web/barbers/noah.png";
@@ -22,7 +21,6 @@ import AmirGallery from "@/assets/web/barbers/barbers-gallery/amir.png";
 import RayhanGallery from "@/assets/web/barbers/barbers-gallery/rayhan.png";
 import JayGallery from "@/assets/web/barbers/barbers-gallery/jay.png";
 import EmmanGallery from "@/assets/web/barbers/barbers-gallery/emman.png";
-import DejanGallery from "@/assets/web/barbers/barbers-gallery/dejan.png";
 import JoshGallery from "@/assets/web/barbers/barbers-gallery/josh.png";
 import NikoGallery from "@/assets/web/barbers/barbers-gallery/niko.png";
 import NoahGallery from "@/assets/web/barbers/barbers-gallery/noah.png";
@@ -164,13 +162,6 @@ export default function Barbers() {
       link: generateRoute("/niko"),
       landing: true,
     },
-    {
-      svg: Dejan,
-      thumbnail: DejanGallery,
-      link: generateRoute("/dejan"),
-      landing: false,
-    },
-
   ];
 
   // Transform barberSvgs into gallery-friendly format
@@ -324,39 +315,31 @@ export default function Barbers() {
         </div>
       </section>
 
-      <section className="relative z-20 w-full min-h-screen flex flex-col justify-center md:max-w-screen-xl mx-auto pt-4 md:pt-12 pb-[8rem] md:pb-[4rem]">
-        <div className="container mx-auto px-2 md:px-8">
+      <section className="relative z-20 w-full flex flex-col justify-center md:max-w-screen-xl mx-auto pt-4 md:pt-8 pb-[4rem] md:pb-[4rem]">
+        <div className="container mx-auto px-2 md:px-8 scale-75 md:scale-100 origin-top">
 
           {/* BARBER NAME CAROUSEL HEADER */}
           <div
             ref={carouselRef}
-            className="relative flex overflow-x-auto overflow-y-hidden gap-2 md:gap-4 items-center mb-4 md:mb-12 pt-4 pb-[5px] scrollbar-hide px-2 md:px-4"
+            className="relative flex overflow-x-auto overflow-y-hidden gap-2 md:gap-4 items-center mb-6 md:mb-8 pt-2 pb-[5px] scrollbar-hide px-2 md:px-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {/* Left spacer untuk centering item pertama */}
             <div className="flex-shrink-0" style={{ width: 'calc(50vw - 150px)' }}></div>
 
             {galleryBarbers.map((barber, index) => {
-              const distance = Math.abs(selectedBarber - index);
-              const opacity = distance === 0 ? 1 : distance === 1 ? 0.5 : 0.2;
-              const scale = distance === 0 ? 1.2 : distance === 1 ? 0.9 : 0.7;
-
               return (
                 <button
                   key={index}
                   onClick={() => handleNameClick(index)}
-                  className={`relative flex-shrink-0 flex flex-col items-center gap-2 md:gap-3 px-4 md:px-8 py-2 transition-all duration-500 cursor-pointer ${
+                  className={`relative flex-shrink-0 flex flex-col items-center gap-0.5 md:gap-2 px-3 md:px-6 py-1 transition-all duration-500 cursor-pointer ${
                     selectedBarber === index
                       ? "text-[#33FF00]"
                       : "text-stone-500"
                   }`}
-                  style={{
-                    opacity: opacity,
-                    transform: `scale(${scale})`,
-                  }}
                 >
                   {/* Thumbnail Image */}
-                  <div className={`w-20 h-20 md:w-32 md:h-32 rounded-md overflow-hidden ${
+                  <div className={`w-16 h-16 md:w-32 md:h-32 rounded-md overflow-hidden ${
                     selectedBarber === index
                       ? "ring-2 ring-[#33FF00]"
                       : ""
@@ -369,14 +352,14 @@ export default function Barbers() {
                   </div>
 
                   {/* Barber Name with underline wrapper */}
-                  <div className="relative pb-3">
-                    <span className="text-lg md:text-4xl font-bold font-poppins whitespace-nowrap">
+                  <div className="relative pb-0">
+                    <span className="text-base md:text-4xl font-bold font-poppins whitespace-nowrap">
                       {barber.name}
                     </span>
 
                     {/* GREEN UNDERLINE for active */}
                     {selectedBarber === index && (
-                      <div className="absolute bottom-0 left-0 right-0 h-1 md:h-[8px] bg-[#33FF00]"></div>
+                      <div className="absolute bottom-[-8px] md:bottom-[-12px] left-0 right-0 h-1 md:h-[4px] bg-[#33FF00]"></div>
                     )}
                   </div>
 
@@ -422,7 +405,7 @@ export default function Barbers() {
           {/* MAIN PREVIEW IMAGE */}
           <div
             ref={previewImageRef}
-            className="max-w-[280px] md:max-w-sm mx-auto mb-8 md:mb-12 overflow-hidden rounded-xl shadow-lg aspect-[0.7]"
+            className="max-w-[240px] md:max-w-sm mx-auto mb-4 md:mb-8 overflow-hidden rounded-xl shadow-lg aspect-[0.7]"
           >
             <img
               key={selectedBarber}
@@ -433,7 +416,7 @@ export default function Barbers() {
           </div>
 
           {/* GREEN DIVIDER LINE WITH CTA BUTTON */}
-          <div className="w-full max-w-screen-md mx-auto mb-5 md:mb-8 relative flex items-center justify-center">
+          <div className="w-full max-w-screen-md mx-auto mb-4 md:mb-6 relative flex items-center justify-center">
             <div className="absolute w-full h-[2px] bg-[#33FF00]"></div>
             <div className="relative z-10 px-4 bg-black">
               <Link to={`${generateRoute(`/${galleryBarbers[selectedBarber].name.toLowerCase()}/book/services`)}`}>
@@ -458,7 +441,6 @@ export default function Barbers() {
                       ? "ring-2 md:ring-4 ring-[#33FF00] scale-100"
                       : "hover:opacity-80 hover:scale-105"
                   }`}
-                  style={index === 9 ? { gridColumnStart: 2 } : {}}
                 >
                 <img
                   src={barber.thumbnail}
@@ -483,14 +465,11 @@ export default function Barbers() {
             {/* Vertical line between column 2 and 3 */}
             <div className="absolute top-0 left-[66.66%] w-[1px] md:w-[2px] h-full bg-[#33FF00] pointer-events-none" style={{ transform: 'translateX(-0.5px)' }}></div>
 
-            {/* Horizontal line after row 1 (25% down) */}
-            <div className="absolute left-0 top-[25%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
+            {/* Horizontal line after row 1 (33.33% down) */}
+            <div className="absolute left-0 top-[33.33%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
 
-            {/* Horizontal line after row 2 (50% down) */}
-            <div className="absolute left-0 top-[50%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
-
-            {/* Horizontal line after row 3 (75% down) */}
-            <div className="absolute left-0 top-[75%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
+            {/* Horizontal line after row 2 (66.66% down) */}
+            <div className="absolute left-0 top-[66.66%] w-full h-[1px] md:h-[2px] bg-[#33FF00] pointer-events-none" style={{ transform: 'translateY(-0.5px)' }}></div>
           </div>
 
         </div>
