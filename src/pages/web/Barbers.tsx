@@ -212,7 +212,9 @@ export default function Barbers() {
     // Smooth scroll to preview with offset
     setTimeout(() => {
       if (previewImageRef.current) {
-        const yOffset = -220; // Account for header
+        // Responsive offset: mobile vs desktop
+        const isMobile = window.innerWidth < 768; // Tailwind 'md' breakpoint
+        const yOffset = isMobile ? -220 : -320; // Mobile needs more offset
         const y = previewImageRef.current.getBoundingClientRect().top +
                   window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
@@ -229,7 +231,9 @@ export default function Barbers() {
     // Scroll to preview
     setTimeout(() => {
       if (previewImageRef.current) {
-        const yOffset = -220;
+        // Responsive offset: mobile vs desktop
+        const isMobile = window.innerWidth < 768; // Tailwind 'md' breakpoint
+        const yOffset = isMobile ? -220 : -320; // Mobile needs more offset
         const y = previewImageRef.current.getBoundingClientRect().top +
                   window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
