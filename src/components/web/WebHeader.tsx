@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import IconNavbarGreen from "@/assets/svg/icon-navbar-green.svg";
+import HeaderMiddle from "@/assets/web/header-middle.png";
 import { Link, useLocation } from "react-router-dom";
 
 import {
@@ -85,7 +86,7 @@ const Header: React.FC = () => {
       style={{
         marginBottom: `-${height}px`,
         background:
-          "linear-gradient(180deg, rgba(3, 18, 13, 0.75) 14.29%, rgba(3, 18, 13, 0.6) 100%)",
+          "linear-gradient(180deg, rgba(3, 18, 13, 1) 14.29%, rgba(3, 18, 13, 1) 100%)",
       }}
     >
       <div className="container mx-auto flex justify-between items-center relative z-10 border-none px-2 md:px-4">
@@ -97,9 +98,16 @@ const Header: React.FC = () => {
             <img
               src={IconNavbarGreen}
               alt="Fadedlines Barber Shop"
-              className="w-8 md:w-10 h-auto opacity-90"
+              className="w-8 md:w-10 h-auto opacity-100"
             />
           </Link>
+        </div>
+        <div className="lg:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none">
+          <img
+            src={HeaderMiddle}
+            alt="Header decoration"
+            className="h-full w-auto opacity-100"
+          />
         </div>
         <nav className="hidden lg:block sticky top-0">
           <ul className="flex text-white/80">

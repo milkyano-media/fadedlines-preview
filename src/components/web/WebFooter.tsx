@@ -2,19 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Logo from "@/assets/web/icons/logo.svg";
-// import Facebook from "@/assets/web/icons/Facebook.svg";
+import Facebook from "@/assets/web/icons/Facebook.svg";
 import Instagram from "@/assets/web/icons/Instagram.svg";
-// import Youtube from "@/assets/web/icons/Youtube.svg";
+import Youtube from "@/assets/web/icons/Youtube.svg";
 import Tiktok from "@/assets/web/icons/Tiktok.svg";
-import Maps from "@/assets/web/icons/Maps.svg";
-import GoogleReview from "@/assets/web/icons/GoogleReview.svg";
-import BgHero2 from "@/assets/web/home/hero.svg";
-import { Button } from "../ui/button";
-import { generateLink } from "@/pages/web/Home";
+// import Maps from "@/assets/web/icons/Maps.svg";
+// import GoogleReview from "@/assets/web/icons/GoogleReview.svg";
+// import BgHero2 from "@/assets/web/home/hero.svg";
+// import { Button } from "../ui/button";
+// import { generateLink } from "@/pages/web/Home";
 
 const WebFooter: React.FC = () => {
   return (
     <footer className="flex flex-col">
+      {/* Hero Section - Commented out
       <section className="flex flex-col justify-center items-center relative py-60">
         <img
           alt="hero image"
@@ -32,17 +33,12 @@ const WebFooter: React.FC = () => {
           <Button className="bg-[#454545] border-[0.5px] border-white text-2xl text-[#33FF00] font-bold px-20 md:px-40 py-7 w-max self-center hover:bg-[#454545]/80">
             {generateLink("BOOK NOW")}
           </Button>
-
-          {/* FadedLines Logo */}
           <img
             src={Logo}
             alt="FadedLines Barbershop Logo"
             className="w-48 md:w-64 h-auto mt-8"
           />
-
-          {/* Visit us on text */}
           <h4 className="text-sm md:text-base font-poppins font-medium mt-6 text-white">Visit us on:</h4>
-
           <div className="flex gap-4 mt-0">
             <a
               href="https://www.instagram.com/fadedlinesbarbershop"
@@ -114,11 +110,11 @@ const WebFooter: React.FC = () => {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="relative z-10">
         <div className="container mx-auto py-12 flex flex-col md:flex-row justify-center relative z-0">
-          {/* <div className="flex flex-col pb-12 md:py-0 gap-10">
+          <div className="flex flex-col pb-12 md:py-0 gap-10">
             <img
               src={Logo}
               alt="barber shop faded lines"
@@ -172,7 +168,7 @@ const WebFooter: React.FC = () => {
                 </li>
               </ul>
             </div>
-          </div> */}
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 w-full md:w-2/3 mx-auto gap-4 md:gap-0 text-sm mr-6">
             <div className="flex flex-col gap-4 relative z-40">
               <h3 className="text-[#33FF00]">Pages</h3>
