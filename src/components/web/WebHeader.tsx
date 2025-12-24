@@ -106,7 +106,7 @@ const Header: React.FC = () => {
           <img
             src={HeaderMiddle}
             alt="Header decoration"
-            className="h-full w-auto opacity-100"
+            className="h-16 md:h-20 w-auto opacity-100"
           />
         </div>
         <nav className="hidden lg:block sticky top-0">

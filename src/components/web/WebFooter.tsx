@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Logo from "@/assets/web/icons/logo.svg";
-import Facebook from "@/assets/web/icons/Facebook.svg";
 import Instagram from "@/assets/web/icons/Instagram.svg";
-import Youtube from "@/assets/web/icons/Youtube.svg";
 import Tiktok from "@/assets/web/icons/Tiktok.svg";
-// import Maps from "@/assets/web/icons/Maps.svg";
-// import GoogleReview from "@/assets/web/icons/GoogleReview.svg";
+import Maps from "@/assets/web/icons/Maps.svg";
+import GoogleReview from "@/assets/web/icons/GoogleReview.svg";
+// import Facebook from "@/assets/web/icons/Facebook.svg";
+// import Youtube from "@/assets/web/icons/Youtube.svg";
 // import BgHero2 from "@/assets/web/home/hero.svg";
 // import { Button } from "../ui/button";
 // import { generateLink } from "@/pages/web/Home";
@@ -126,44 +126,80 @@ const WebFooter: React.FC = () => {
                 <li>
                   <a
                     href="https://www.instagram.com/fadedlinesbarbershop"
-                    className="text-md uppercase font-black hover:text-stone-50 opacity-40 hover:opacity-100 relative z-50"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-all duration-300 hover:scale-110"
+                    style={{
+                      filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+                    }}
                   >
-                    <img
-                      alt="instagram"
-                      src={Instagram}
-                      className="w-12 h-auto"
-                    />
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href="https://www.facebook.com/p/Faded-Lines-Barbershop-100066737611092/"
-                    className="text-md uppercase font-black hover:text-stone-50 opacity-40 hover:opacity-100 "
-                  >
-                    <img
-                      alt="Facebook"
-                      src={Facebook}
-                      className="w-12 h-auto"
-                    />
+                    <img alt="Instagram" src={Instagram} className="w-12 h-auto" />
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="https://www.tiktok.com/@faded_lines"
-                    className="text-md uppercase font-black hover:text-stone-50 opacity-40 hover:opacity-100 "
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-all duration-300 hover:scale-110"
+                    style={{
+                      filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+                    }}
                   >
-                    <img alt="Tiktok" src={Tiktok} className="w-12 h-auto" />
+                    <img alt="TikTok" src={Tiktok} className="w-12 h-auto" />
                   </a>
                 </li>
 
                 <li>
                   <a
-                    href="https://www.youtube.com/@Faded_Lines"
-                    className="text-md uppercase font-black hover:text-stone-50 opacity-40 hover:opacity-100 "
+                    href="https://maps.app.goo.gl/tBwhgZUekSLXHF4P6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-all duration-300 hover:scale-110"
+                    style={{
+                      filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+                    }}
                   >
-                    <img alt="Youtube" src={Youtube} className="w-12 h-auto" />
+                    <img alt="Google Maps" src={Maps} className="w-12 h-auto" />
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="https://shorturl.at/72sRM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-all duration-300 hover:scale-110"
+                    style={{
+                      filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+                    }}
+                  >
+                    <img alt="Google Review" src={GoogleReview} className="w-12 h-auto" />
                   </a>
                 </li>
               </ul>
