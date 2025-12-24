@@ -212,7 +212,7 @@ export default function Barbers() {
     // Smooth scroll to preview with offset
     setTimeout(() => {
       if (previewImageRef.current) {
-        const yOffset = -120; // Account for header
+        const yOffset = -220; // Account for header
         const y = previewImageRef.current.getBoundingClientRect().top +
                   window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
@@ -229,7 +229,7 @@ export default function Barbers() {
     // Scroll to preview
     setTimeout(() => {
       if (previewImageRef.current) {
-        const yOffset = -120;
+        const yOffset = -220;
         const y = previewImageRef.current.getBoundingClientRect().top +
                   window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
