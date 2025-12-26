@@ -227,7 +227,7 @@ export default function Barbers() {
   const handleHeroBookNowClick = () => {
     if (bookNowButtonRef.current) {
       const isMobile = window.innerWidth < 768;
-      const yOffset = isMobile ? -550 : -400;
+      const yOffset = isMobile ? -550 : -700;
       const y = bookNowButtonRef.current.getBoundingClientRect().top +
                 window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
