@@ -239,7 +239,7 @@ export default function Barbers() {
       if (previewImageRef.current) {
         // Responsive offset: mobile vs desktop
         const isMobile = window.innerWidth < 768; // Tailwind 'md' breakpoint
-        const yOffset = isMobile ? -220 : -320; // Mobile needs more offset
+        const yOffset = isMobile ? -220 : -150; // Mobile needs more offset
         const y = previewImageRef.current.getBoundingClientRect().top +
                   window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
@@ -258,7 +258,7 @@ export default function Barbers() {
       if (previewImageRef.current) {
         // Responsive offset: mobile vs desktop
         const isMobile = window.innerWidth < 768; // Tailwind 'md' breakpoint
-        const yOffset = isMobile ? -220 : -320; // Mobile needs more offset
+        const yOffset = isMobile ? -220 : -150; // Mobile needs more offset
         const y = previewImageRef.current.getBoundingClientRect().top +
                   window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
