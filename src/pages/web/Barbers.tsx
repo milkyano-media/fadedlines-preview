@@ -4,6 +4,11 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation } from "react-router-dom";
 import BgHero2 from "@/assets/web/home/hero.svg";
+import Logo from "@/assets/web/icons/logo.svg";
+import Instagram from "@/assets/web/icons/Instagram.svg";
+import Tiktok from "@/assets/web/icons/Tiktok.svg";
+import Maps from "@/assets/web/icons/Maps.svg";
+import GoogleReview from "@/assets/web/icons/GoogleReview.svg";
 import useEmblaCarousel from "embla-carousel-react";
 
 // Preview images (for large preview)
@@ -91,6 +96,26 @@ export default function Barbers() {
       return `/meta${route}`;
     } else {
       return route;
+    }
+  };
+
+  const generateLink = (text: string): JSX.Element => {
+    const customize: boolean = true;
+    const squareLink: string =
+      "https://book.squareup.com/appointments/ud9yhcwfqc1fg0/location/LY7BZ89WAQ2QS/services";
+
+    let bookLink: string;
+    const parts = location.pathname.split("/");
+    if (parts[1] === "meta") {
+      bookLink = `/meta/book/services`;
+    } else {
+      bookLink = "/book/services";
+    }
+
+    if (customize) {
+      return <Link to={bookLink}>{text}</Link>;
+    } else {
+      return <a href={squareLink}>{text}</a>;
     }
   };
 
@@ -280,7 +305,7 @@ export default function Barbers() {
         <meta name="twitter:card" content="summary_large_img" />
       </Helmet>
 
-      <section className="flex flex-col justify-center items-center relative pt-40">
+      <section className="flex flex-col justify-center items-center relative pt-60 md:pt-40">
         <img
           alt="hero image"
           width={500}
@@ -290,8 +315,90 @@ export default function Barbers() {
         />
         <div className="top-0 absolute w-full h-full object-cover z-0 bg-gradient-to-b from-black/80 to-black" />
         <div className="flex flex-col justify-center items-center text-center gap-6 z-10">
+          <div className="flex flex-col">
+            <img
+              src={Logo}
+              alt="Fadedlines Barber Shop"
+              className="w-[20rem] md:w-[25rem] h-auto"
+            />
+          </div>
+          <Button className="bg-[#454545] border-[0.5px] border-white text-2xl text-[#33FF00] font-bold px-16 py-7 w-max self-center hover:bg-[#454545]/80">
+            {generateLink("BOOK NOW")}
+          </Button>
+
+          <div className="flex gap-4 mt-4">
+            <a
+              href="https://www.instagram.com/fadedlinesbarbershop"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-110"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+              }}
+            >
+              <img alt="Instagram" src={Instagram} className="w-12 h-auto" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@faded_lines"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-110"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+              }}
+            >
+              <img alt="TikTok" src={Tiktok} className="w-12 h-auto" />
+            </a>
+            <a
+              href="https://maps.app.goo.gl/tBwhgZUekSLXHF4P6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-110"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+              }}
+            >
+              <img alt="Google Maps" src={Maps} className="w-12 h-auto" />
+            </a>
+            <a
+              href="https://shorturl.at/72sRM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-110"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))';
+              }}
+            >
+              <img alt="Google Review" src={GoogleReview} className="w-12 h-auto" />
+            </a>
+          </div>
+
           <svg
-            className="w-7 mt-8"
+            className="w-7 mt-20"
             viewBox="0 0 55 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
