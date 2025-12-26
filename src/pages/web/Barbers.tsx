@@ -99,25 +99,25 @@ export default function Barbers() {
     }
   };
 
-  const generateLink = (text: string): JSX.Element => {
-    const customize: boolean = true;
-    const squareLink: string =
-      "https://book.squareup.com/appointments/ud9yhcwfqc1fg0/location/LY7BZ89WAQ2QS/services";
+  // const generateLink = (text: string): JSX.Element => {
+  //   const customize: boolean = true;
+  //   const squareLink: string =
+  //     "https://book.squareup.com/appointments/ud9yhcwfqc1fg0/location/LY7BZ89WAQ2QS/services";
 
-    let bookLink: string;
-    const parts = location.pathname.split("/");
-    if (parts[1] === "meta") {
-      bookLink = `/meta/book/services`;
-    } else {
-      bookLink = "/book/services";
-    }
+  //   let bookLink: string;
+  //   const parts = location.pathname.split("/");
+  //   if (parts[1] === "meta") {
+  //     bookLink = `/meta/book/services`;
+  //   } else {
+  //     bookLink = "/book/services";
+  //   }
 
-    if (customize) {
-      return <Link to={bookLink}>{text}</Link>;
-    } else {
-      return <a href={squareLink}>{text}</a>;
-    }
-  };
+  //   if (customize) {
+  //     return <Link to={bookLink}>{text}</Link>;
+  //   } else {
+  //     return <a href={squareLink}>{text}</a>;
+  //   }
+  // };
 
   // const generateLink = () => {
   //   const squareLink: string =
@@ -305,7 +305,7 @@ export default function Barbers() {
         <meta name="twitter:card" content="summary_large_img" />
       </Helmet>
 
-      <section className="flex flex-col justify-center items-center relative pt-60 md:pt-40">
+      <section className="flex flex-col justify-center items-center relative pt-28 md:pt-40">
         <img
           alt="hero image"
           width={500}
@@ -322,9 +322,11 @@ export default function Barbers() {
               className="w-[20rem] md:w-[25rem] h-auto"
             />
           </div>
-          <Button className="bg-[#454545] border-[0.5px] border-white text-2xl text-[#33FF00] font-bold px-16 py-7 w-max self-center hover:bg-[#454545]/80">
-            {generateLink("BOOK NOW")}
-          </Button>
+          <Link to={`${generateRoute(`/${galleryBarbers[selectedBarber].name.toLowerCase()}/book/services`)}`}>
+            <Button className="bg-[#454545] border-[0.5px] border-white text-2xl text-[#33FF00] font-bold px-16 py-7 w-max self-center hover:bg-[#454545]/80">
+              BOOK NOW
+            </Button>
+          </Link>
 
           <div className="flex gap-4 mt-4">
             <a
