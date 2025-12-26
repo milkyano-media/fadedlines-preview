@@ -41,6 +41,7 @@ export default function Barbers() {
   // Gallery state management
   const [selectedBarber, setSelectedBarber] = useState(0);
   const previewImageRef = useRef<HTMLDivElement>(null);
+  const bookNowButtonRef = useRef<HTMLDivElement>(null);
 
   // Embla Carousel setup with infinite loop
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -222,6 +223,17 @@ export default function Barbers() {
     };
   }, [emblaApi, onSelect]);
 
+  // Handler for hero Book Now button - scroll to gallery Book Now
+  const handleHeroBookNowClick = () => {
+    if (bookNowButtonRef.current) {
+      const isMobile = window.innerWidth < 768;
+      const yOffset = isMobile ? -220 : -400;
+      const y = bookNowButtonRef.current.getBoundingClientRect().top +
+                window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   // Interaction handlers for gallery
   const handleThumbnailClick = (index: number, e?: React.MouseEvent) => {
     if (e) {
@@ -322,11 +334,12 @@ export default function Barbers() {
               className="w-[20rem] md:w-[25rem] h-auto"
             />
           </div>
-          <Link to={`${generateRoute(`/${galleryBarbers[selectedBarber].name.toLowerCase()}/book/services`)}`}>
-            <Button className="bg-[#454545] border-[0.5px] border-white text-2xl text-[#33FF00] font-bold px-16 py-7 w-max self-center hover:bg-[#454545]/80">
-              BOOK NOW
-            </Button>
-          </Link>
+          <Button
+            onClick={handleHeroBookNowClick}
+            className="bg-[#454545] border-[0.5px] border-white text-2xl text-[#33FF00] font-bold px-16 py-7 w-max self-center hover:bg-[#454545]/80 cursor-pointer"
+          >
+            BOOK NOW
+          </Button>
 
           <div className="flex gap-4 mt-4">
             <a
@@ -513,7 +526,7 @@ export default function Barbers() {
           </div>
 
           {/* GREEN DIVIDER LINE WITH CTA BUTTON */}
-          <div className="w-full max-w-screen-md mx-auto mb-4 md:mb-6 relative flex items-center justify-center">
+          <div ref={bookNowButtonRef} className="w-full max-w-screen-md mx-auto mb-4 md:mb-6 relative flex items-center justify-center">
             <div className="absolute w-full h-[2px] bg-[#33FF00]"></div>
             <div className="relative z-10 px-4 bg-black">
               <Link to={`${generateRoute(`/${galleryBarbers[selectedBarber].name.toLowerCase()}/book/services`)}`}>
